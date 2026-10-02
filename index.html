@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>College Library Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Library Management System <span class="tag">BCA Final Project</span></h1>
+  <section id="stats" class="stats"></section>
+
+  <nav role="tablist">
+    <button class="tab" data-t="books" aria-selected="true">Books</button>
+    <button class="tab" data-t="members" aria-selected="false">Members</button>
+    <button class="tab" data-t="issue" aria-selected="false">Issue / Return</button>
+    <button class="tab" data-t="history" aria-selected="false">History</button>
+  </nav>
+
+  <div id="toolbar" class="toolbar"></div>
+  <div id="view" class="tbl"></div>
+  <p class="foot">Data is stored in this browser only (localStorage). For a classroom demo, that's expected \u2014 see the README for how to add a shared database.</p>
+</main>
+
+<dialog id="dBook"><form method="dialog" id="fBook">
+  <h2 id="bTitle">Add book</h2>
+  <label>Title<input id="bT" required maxlength="100"></label>
+  <div class="row"><label>Author<input id="bA" required maxlength="80"></label><label>ISBN<input id="bI" maxlength="20"></label></div>
+  <div class="row"><label>Category<input id="bC" placeholder="e.g. Computer Science" maxlength="50"></label><label>Copies<input id="bQ" type="number" min="1" value="1" required></label></div>
+  <div class="acts"><button type="button" class="btn ghost" data-close>Cancel</button><button class="btn">Save book</button></div>
+</form></dialog>
+
+<dialog id="dMember"><form method="dialog" id="fMember">
+  <h2>Add member</h2>
+  <label>Full name<input id="mN" required maxlength="80"></label>
+  <div class="row"><label>Roll / Staff No.<input id="mR" required maxlength="30"></label><label>Type<select id="mTy"><option>Student</option><option>Faculty</option></select></label></div>
+  <label>Email / Contact<input id="mE" maxlength="80"></label>
+  <div class="acts"><button type="button" class="btn ghost" data-close>Cancel</button><button class="btn">Save member</button></div>
+</form></dialog>
+
+<dialog id="dIssue"><form method="dialog" id="fIssue">
+  <h2>Issue book</h2>
+  <label>Book<select id="iBook" required></select></label>
+  <label>Member<select id="iMember" required></select></label>
+  <label>Due date<input id="iDue" type="date" required></label>
+  <div class="acts"><button type="button" class="btn ghost" data-close>Cancel</button><button class="btn">Issue</button></div>
+</form></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
