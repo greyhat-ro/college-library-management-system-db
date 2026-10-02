@@ -21,7 +21,7 @@ async function refreshAll() {
     S.txns = (t.data || []).map(x => ({ id: x.id, bookId: x.book_id, memberId: x.member_id, issued: x.issued_date, due: x.due_date, returned: x.returned_date, fine: x.fine }));
     render();
   } catch (err) {
-    $("view").innerHTML = `<div class="empty">Could not reach Supabase. Check config.js has the right URL/key and that supabase_schema.sql has been run.<br><small>${esc(err.message || err)}</small></div>`;
+    $("view").innerHTML = `<div class="empty">Could not reach Supabase. Check config.js has the right URL/key and that schema.sql has been run.<br><small>${esc(err.message || err)}</small></div>`;
     console.error(err);
   }
 }
